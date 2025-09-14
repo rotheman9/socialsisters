@@ -1,6 +1,6 @@
-# Social Sister Collective Website
+# Social Sisters Collective Website
 
-A beautiful, build-free static website for Social Sister Collective, a party decoration company based in Oregon. Features a modern, minimal, feminine design with a nude color palette.
+A beautiful, build-free static website for Social Sisters Collective, a party decoration company based in Oregon. Features a modern, minimal, feminine design with a nude color palette.
 
 ## 🎨 Design Features
 
@@ -153,4 +153,4 @@ For questions about this website template or customization help, contact the dev
 
 ---
 
-**Social Sister Collective** - Creating beautiful, inclusive party experiences across Oregon with our signature nude aesthetic and attention to detail.
+**Social Sisters Collective** - Creating beautiful, inclusive party experiences across Oregon with our signature nude aesthetic and attention to detail.
