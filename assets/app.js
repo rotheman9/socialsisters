@@ -210,10 +210,16 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
-    // Mobile menu toggle (if needed in future)
-    function createMobileMenu() {
+    // Mobile menu toggle - improved implementation
+    function initMobileMenu() {
         const header = document.querySelector('.header-content');
         const nav = document.querySelector('.nav');
+        
+        // Remove existing mobile menu button if it exists
+        const existingBtn = document.querySelector('.mobile-menu-btn');
+        if (existingBtn) {
+            existingBtn.remove();
+        }
         
         if (window.innerWidth <= 920 && nav) {
             // Create mobile menu button
@@ -228,11 +234,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 color: var(--ink);
                 cursor: pointer;
                 padding: 0.5rem;
+                z-index: 1001;
             `;
             
             // Toggle mobile menu
-            mobileMenuBtn.addEventListener('click', function() {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
                 nav.classList.toggle('mobile-nav-open');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!nav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    nav.classList.remove('mobile-nav-open');
+                }
             });
             
             // Add button to header
@@ -241,34 +256,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initialize mobile menu on load and resize
-    createMobileMenu();
-    window.addEventListener('resize', createMobileMenu);
+    initMobileMenu();
+    window.addEventListener('resize', debounce(initMobileMenu, 250));
 
-    // Add mobile nav styles
+    // Add mobile menu button styles
     const style = document.createElement('style');
     style.textContent = `
+        .mobile-menu-btn {
+            display: none;
+        }
+        
         @media (max-width: 920px) {
-            .nav {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--white);
-                flex-direction: column;
-                padding: 1rem;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            .nav.mobile-nav-open {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
             .mobile-menu-btn {
                 display: block !important;
             }
