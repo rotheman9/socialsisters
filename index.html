@@ -1,415 +1,1810 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Social Sisters Collective | Oregon Party Decoration & Balloon Styling</title>
-    <meta name="description" content="Chic party décor & balloon styling in a modern nude aesthetic. From intimate showers to brand activations, we design photo-ready setups across Oregon.">
-    
-    <!-- Social Profiles -->
-    <link rel="me" href="https://www.instagram.com/socialsisterscollective?igsh=NWpreTZid2I4ajlq&utm_source=qr" title="Social Sisters Collective on Instagram">
-    <link rel="me" href="https://www.tiktok.com/@socialsisterscollective" title="Social Sisters Collective on TikTok">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Sisters Collective | Oregon Party Decoration & Balloon Styling</title>
+  <meta name="description" content="Social Sisters Collective — luxury balloon styling, photo-ready setups, and photobooth rentals across Oregon. Serving Portland and beyond with signature nude aesthetic and inclusive design." />
+  <meta name="keywords" content="balloon styling Oregon, party decoration Portland, photobooth rental Oregon, balloon garland Portland, event decor Oregon" />
+  <meta property="og:title" content="Social Sisters Collective | Oregon Party Decoration & Balloon Styling" />
+  <meta property="og:description" content="Modern minimalist party decoration and balloon styling for every celebration. Portland, Oregon." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/styles.css">
-    
-    <!-- JSON-LD Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Social Sisters Collective",
-        "areaServed": "Oregon",
-        "email": "socialsisterscollective@outlook.com",
-        "url": "https://socialsistersco.com",
-        "description": "Chic party décor & balloon styling in a modern nude aesthetic"
+    :root {
+      --cream: #faf7f4;
+      --warm-white: #f5efe8;
+      --blush: #e8d5c4;
+      --rose: #c9a48e;
+      --taupe: #a0856e;
+      --deep: #5c3d2e;
+      --charcoal: #2a1f1a;
+      --gold: #c4935a;
+      --gold-light: #e8c496;
+      --text: #3a2a20;
+      --text-light: #7a6458;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
     }
-    </script>
+
+    html { scroll-behavior: smooth; }
+
+    /* Ensure minimum 44px touch targets on mobile */
+    @media (max-width: 768px) {
+      .btn-primary, .btn-outline, .nav-cta, .pkg-cta, .form-submit {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .faq-q { min-height: 44px; }
+      .tab-btn { min-height: 44px; }
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 rgba(160,133,110,0.15);
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--charcoal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--deep); }
+    .nav-cta {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--deep);
+      color: var(--cream);
+      padding: 0.6rem 1.4rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--charcoal); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--charcoal);
+      transition: all 0.3s;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--cream);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      padding: 0.5rem 1rem;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 1.25rem; right: 1.25rem;
+      background: none; border: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      color: var(--charcoal);
+      padding: 0.5rem;
+      line-height: 1;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem 6rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .hero-h1 em { font-style: italic; color: var(--taupe); }
+    .hero-sub {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--deep);
+      color: var(--cream);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--charcoal); transform: translateY(-1px); }
+    .btn-outline {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--blush);
+      color: var(--text);
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--taupe); color: var(--deep); }
+    .hero-badges {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--blush);
+    }
+    .badge { text-align: center; }
+    .badge-num {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--deep);
+    }
+    .badge-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 20%);
+    }
+    .hero-float-tag {
+      position: absolute;
+      bottom: 3rem;
+      left: -1rem;
+      background: var(--cream);
+      padding: 1rem 1.5rem;
+      box-shadow: 0 8px 40px rgba(92,61,46,0.12);
+      border-radius: 2px;
+    }
+    .hero-float-tag p {
+      font-family: var(--serif);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--taupe);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--deep);
+      padding: 0.9rem 0;
+      overflow: hidden;
+    }
+    .marquee-inner {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-item {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-shrink: 0;
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 0; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--warm-white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--blush);
+      border: 1.5px solid var(--blush);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .service-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .service-card:hover { background: var(--warm-white); }
+    .service-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+    .service-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .service-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .service-list li {
+      font-size: 0.8rem;
+      color: var(--taupe);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-list li::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── PACKAGES ── */
+    #packages { background: var(--cream); }
+    .packages-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--blush);
+    }
+    .tab-btn {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.75rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-light);
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--deep);
+      border-bottom-color: var(--deep);
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--blush); border: 1.5px solid var(--blush); border-radius: 4px; overflow: hidden; }
+    .pkg-card {
+      background: var(--cream);
+      padding: 2.5rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .pkg-card:hover { background: var(--warm-white); }
+    .pkg-card.featured {
+      background: var(--warm-white);
+      position: relative;
+    }
+    .pkg-featured-badge {
+      display: inline-block;
+      background: var(--gold);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .pkg-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.3rem;
+    }
+    .pkg-name {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+    .pkg-price {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .pkg-includes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    .pkg-includes li {
+      font-size: 0.8rem;
+      color: var(--taupe);
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+    .pkg-includes li::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .pkg-cta {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--deep);
+      border-bottom: 1px solid var(--blush);
+      padding-bottom: 2px;
+      text-decoration: none;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .pkg-cta:hover { color: var(--gold); border-color: var(--gold); }
+    .pkg-note {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 1.5rem;
+      font-style: italic;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--charcoal); padding: 5rem 0; }
+    #gallery .section-eyebrow { color: var(--gold-light); }
+    #gallery .section-title { color: var(--cream); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item:not(:first-child) { aspect-ratio: 1/1; }
+    .gallery-item:first-child { min-height: 400px; }
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(42,31,26,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay { background: rgba(42,31,26,0.35); }
+    .gallery-overlay-icon {
+      color: #fff;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .gallery-overlay-icon { opacity: 1; }
+    .gallery-cta-wrap { text-align: center; margin-top: 2rem; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--warm-white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+    .about-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 55%;
+      aspect-ratio: 1/1;
+      background: var(--blush);
+      border-radius: 4px;
+      z-index: -1;
+    }
+    .about-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--charcoal);
+      margin-bottom: 1.5rem;
+    }
+    .about-text p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+    .about-values {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .about-value {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .about-value-icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .about-value-text h4 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .about-value-text p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+
+
+
+    /* ── FAQ ── */
+    #faq { background: var(--warm-white); }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--blush);
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      padding: 1.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      gap: 1rem;
+    }
+    .faq-arrow {
+      width: 20px; height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--blush);
+      transition: transform 0.3s, background 0.3s;
+      font-size: 0.75rem;
+      color: var(--taupe);
+    }
+    .faq-item.open .faq-arrow {
+      transform: rotate(45deg);
+      background: var(--deep);
+      color: #fff;
+      border-color: var(--deep);
+    }
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .faq-a-inner { padding: 0 0 1.25rem; }
+    .faq-item.open .faq-a { max-height: 200px; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--cream); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 2.25rem;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: var(--blush);
+      z-index: 0;
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    .step-num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--blush);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--deep);
+      margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .process-step:hover .step-num {
+      background: var(--deep);
+      border-color: var(--deep);
+      color: #fff;
+    }
+    .process-step h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .process-step p {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--deep); padding: 6rem 0; }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info { color: var(--cream); }
+    .contact-info .section-eyebrow { color: var(--gold-light); }
+    .contact-info h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 1.25rem;
+      line-height: 1.2;
+    }
+    .contact-info p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(250,247,244,0.7);
+      margin-bottom: 2rem;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .contact-detail-icon {
+      width: 36px; height: 36px;
+      background: rgba(250,247,244,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-text { font-size: 0.88rem; color: rgba(250,247,244,0.8); }
+    .contact-detail-text a { color: var(--gold-light); text-decoration: none; }
+    .contact-detail-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,247,244,0.4);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    /* Form */
+    .contact-form {
+      background: rgba(250,247,244,0.06);
+      border: 1px solid rgba(250,247,244,0.12);
+      border-radius: 6px;
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,247,244,0.5);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: rgba(250,247,244,0.08);
+      border: 1px solid rgba(250,247,244,0.15);
+      border-radius: 3px;
+      padding: 0.8rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      color: var(--cream);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(250,247,244,0.25);
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group select option { background: var(--deep); color: var(--cream); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    .service-check {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      font-size: 0.8rem;
+      color: rgba(250,247,244,0.7);
+    }
+    .service-check input { width: auto; }
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--charcoal);
+      border: none;
+      padding: 1rem;
+      border-radius: 3px;
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background 0.2s, transform 0.2s;
+      font-weight: 500;
+    }
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-1px);
+    }
+    .form-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-status {
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: 1rem;
+      min-height: 1.2em;
+      color: var(--gold-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 0 1.5rem;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(250,247,244,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .footer-brand .nav-logo {
+      margin-bottom: 1rem;
+      display: inline-flex;
+    }
+    .footer-brand p {
+      font-size: 0.84rem;
+      color: rgba(250,247,244,0.5);
+      line-height: 1.7;
+      max-width: 260px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .social-icon {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(250,247,244,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(250,247,244,0.5);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-col h5 {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250,247,244,0.3);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul a {
+      font-size: 0.84rem;
+      color: rgba(250,247,244,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(250,247,244,0.3);
+    }
+
+    /* ── BACK TO TOP ── */
+    .back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 42px; height: 42px;
+      background: var(--deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cream);
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(92,61,46,0.3);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      font-size: 1rem;
+      z-index: 50;
+    }
+    .back-top.visible { opacity: 1; pointer-events: auto; }
+    .back-top:hover { transform: translateY(-2px); }
+
+    /* ── ANIMATIONS ── */
+    .reveal { opacity: 1; transform: none; }
+    .reveal.animate-ready {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.animate-ready.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+
+    /* Tablet: 1024px */
+    @media (max-width: 1024px) {
+      .tab-panel.active { grid-template-columns: repeat(2, 1fr); gap: 1.5px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+      .process-steps::before { display: none; }
+      .hero-left { padding: 7rem 3rem 4rem 4rem; }
+    }
+
+    /* Mobile: 768px */
+    @media (max-width: 768px) {
+      /* Global */
+      section { padding: 4rem 0; }
+      .container { padding: 0 1.25rem; }
+      .section-title { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+
+      /* Nav */
+      nav { padding: 1rem 1.25rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      /* Hero */
+      #home {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        min-height: auto;
+      }
+      .hero-left {
+        padding: 6rem 1.25rem 2.5rem;
+        order: 2;
+      }
+      .hero-right {
+        order: 1;
+        height: 65vw;
+        min-height: 240px;
+      }
+      .hero-img-overlay {
+        background: linear-gradient(to bottom, transparent 50%, var(--cream) 100%);
+      }
+      .hero-float-tag { display: none; }
+      .hero-h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
+      .hero-sub { max-width: 100%; font-size: 0.9rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions a { text-align: center; }
+      .hero-badges {
+        gap: 1.25rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .badge-num { font-size: 1.5rem; }
+
+      /* Marquee */
+      .marquee-item { font-size: 0.65rem; letter-spacing: 0.12em; }
+
+      /* Services */
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5px;
+      }
+      .service-card { padding: 1.75rem 1.5rem; }
+
+      /* Process */
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem 1.5rem; }
+      .process-step { padding: 0 0.5rem; }
+
+      /* Packages */
+      .packages-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .tab-btn { white-space: nowrap; padding: 0.75rem 1.25rem; font-size: 0.75rem; }
+      .tab-panel.active {
+        grid-template-columns: 1fr;
+        gap: 1.5px;
+      }
+      .pkg-card { padding: 1.75rem 1.5rem; }
+
+      /* Gallery */
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+      }
+      .gallery-item:first-child {
+        grid-column: span 2;
+        min-height: 260px;
+      }
+      .gallery-item:not(:first-child) { aspect-ratio: 1/1; }
+      .gallery-cta-wrap { margin-top: 1.5rem; }
+
+      /* About */
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-img-wrap { order: 1; }
+      .about-text { order: 2; }
+      .about-img { aspect-ratio: 16/9; border-radius: 4px; }
+      .about-accent { display: none; }
+      .about-text h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+
+      /* FAQ */
+      .faq-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .faq-q { font-size: 0.95rem; }
+
+      /* Contact */
+      .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      #contact { padding: 4rem 0; }
+      .contact-form { padding: 1.75rem 1.25rem; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .form-services { grid-template-columns: 1fr 1fr; }
+
+      /* Footer */
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+      .footer-brand { grid-column: span 2; }
+    }
+
+    /* Small mobile: 480px */
+    @media (max-width: 480px) {
+      /* Services: single column */
+      .services-grid { grid-template-columns: 1fr; }
+
+      /* Process: single column */
+      .process-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* Packages: single column */
+      .tab-panel.active { grid-template-columns: 1fr; }
+
+      /* Gallery: single column */
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; min-height: 220px; }
+      .gallery-item:not(:first-child) { aspect-ratio: 4/3; }
+
+      /* Hero */
+      .hero-right { height: 75vw; }
+      .hero-badges { justify-content: space-between; }
+
+      /* Form */
+      .form-services { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: span 1; }
+
+      /* Buttons full width on small screens */
+      .btn-primary, .btn-outline { display: block; text-align: center; width: 100%; }
+
+      /* Padding */
+      section { padding: 3rem 0; }
+      #contact { padding: 3rem 0; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Sticky Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="#home" class="logo">
-                    <img src="assets/logo.png" alt="Social Sisters Collective logo" class="logo-img">
-                    <span>Social Sisters Collective</span>
-                </a>
-                <nav class="nav">
-                    <a href="#services" class="nav-link">Services</a>
-                    <a href="#packages" class="nav-link">Packages</a>
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </nav>
-                <a href="#contact" class="btn btn-primary">Get a Quote</a>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">Social Sisters <span>Collective</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#packages" class="mobile-link">Packages</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#about" class="mobile-link">About</a>
+  <a href="#faq" class="mobile-link">FAQ</a>
+  <a href="#contact" class="mobile-link">Get a Quote</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portland, Oregon · Est. 2024</p>
+    <h1 class="hero-h1">
+      Beautiful <em>styling</em><br>for every<br>celebration.
+    </h1>
+    <p class="hero-sub">From intimate showers to brand activations, we design photo-ready setups with our signature nude aesthetic — inclusive, elegant, unforgettable.</p>
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">View Packages</a>
+      <a href="#contact" class="btn-outline">Get a Quote</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge">
+        <div class="badge-num">100+</div>
+        <div class="badge-label">Events Styled</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">5★</div>
+        <div class="badge-label">Client Rating</div>
+      </div>
+      <div class="badge">
+        <div class="badge-num">Oregon</div>
+        <div class="badge-label">Wide Service</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="assets/hero1.png" alt="Elegant party decoration with nude balloons" class="hero-img" />
+    <div class="hero-img-overlay"></div>
+    <div class="hero-float-tag">
+      <p>"Every detail, beautifully placed."</p>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner">
+    <span class="marquee-item">Balloon Styling <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Room Décor <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Photobooth Rental <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Drape Decorations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Backdrops & Props <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Baby Showers <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Brand Activations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Birthdays & Bridal <span class="marquee-dot"></span></span>
+    <!-- Duplicate for seamless loop -->
+    <span class="marquee-item">Balloon Styling <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Room Décor <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Photobooth Rental <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Drape Decorations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Backdrops & Props <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Baby Showers <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Brand Activations <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Birthdays & Bridal <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">What We Offer</span>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-sub">Full-service styling from consultation to cleanup. We handle every detail so you can be fully present.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-icon">🎈</div>
+        <h3>Balloon Design</h3>
+        <p>Custom balloon arrangements that transform any space into an Instagram-worthy backdrop.</p>
+        <ul class="service-list">
+          <li>Organic balloon garlands</li>
+          <li>Custom color palettes</li>
+          <li>Installation & cleanup</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📸</div>
+        <h3>Backdrops & Props</h3>
+        <p>Stunning photo backdrops and curated props that elevate your event's visual appeal.</p>
+        <ul class="service-list">
+          <li>Custom backdrop design</li>
+          <li>Prop styling & placement</li>
+          <li>Lighting coordination</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🛏</div>
+        <h3>Room Décor</h3>
+        <p>Romantic room decorations featuring floor and ceiling balloons, petals, and premium accents.</p>
+        <ul class="service-list">
+          <li>Complete setup</li>
+          <li>Premium balloons & props</li>
+          <li>Personalized design</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🪩</div>
+        <h3>Photobooth Rental</h3>
+        <p>Interactive photobooths with glam filters and instant sharing to keep guests engaged all night.</p>
+        <ul class="service-list">
+          <li>iPad booths + glam filters</li>
+          <li>Custom overlays & branding</li>
+          <li>Delivery, setup & props</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">✨</div>
+        <h3>Drape Decorations</h3>
+        <p>Transform any venue with flowing drape decorations that add a touch of understated elegance.</p>
+        <ul class="service-list">
+          <li>Custom drape color</li>
+          <li>Design & placement</li>
+          <li>Venue-approved installs</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🌸</div>
+        <h3>Full Event Styling</h3>
+        <p>Let us take the reins on the entire visual experience — from concept to complete installation.</p>
+        <ul class="service-list">
+          <li>Mood board consultation</li>
+          <li>Full-day coordination</li>
+          <li>Custom quote available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;">
+      <span class="section-eyebrow">Our Process</span>
+      <h2 class="section-title">How It Works</h2>
+    </div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Submit a Quote</h3>
+        <p>Tell us about your event, vision, and budget using our simple quote form.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Consultation</h3>
+        <p>We'll connect to refine your vision, select colors, and finalize your package.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>We Set Up</h3>
+        <p>Our team arrives early, sets up everything, and handles all the details.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>You Celebrate</h3>
+        <p>Enjoy your perfectly styled event. We handle teardown and cleanup too.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Pricing</span>
+      <h2 class="section-title">Packages & Pricing</h2>
+      <p class="section-sub">Every package includes delivery, setup, and breakdown with our signature Social Sisters touch.</p>
+    </div>
+    <div class="packages-tabs reveal">
+      <button class="tab-btn active" data-tab="event">Event Installations</button>
+      <button class="tab-btn" data-tab="room">Room Décor</button>
+    </div>
+    <div class="tab-panel active" id="tab-event">
+      <div class="pkg-card">
+        <div class="pkg-icon">🎈</div>
+        <div class="pkg-name">#1 Basic Decor</div>
+        <div class="pkg-price">Starting at $275</div>
+        <ul class="pkg-includes">
+          <li>Half garland (up to 3 colors)</li>
+          <li>One styling pillar</li>
+          <li>LED sign rental</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-icon">🌟</div>
+        <div class="pkg-name">#2 Standard Event</div>
+        <div class="pkg-price">$550 – $650+</div>
+        <ul class="pkg-includes">
+          <li>Full garland (2 arches)</li>
+          <li>Mirror styling with decals</li>
+          <li>LED sign rental</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-featured-badge">Most Popular</div>
+        <div class="pkg-icon">✨</div>
+        <div class="pkg-name">#3 Premium Celebration</div>
+        <div class="pkg-price">$850 – $1,000+</div>
+        <ul class="pkg-includes">
+          <li>Full garland (up to 3 colors)</li>
+          <li>Two pillars with premium draping</li>
+          <li>Mirror styling & LED sign</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-icon">👑</div>
+        <div class="pkg-name">#4 Luxury Showcase</div>
+        <div class="pkg-price">Starting at $1,200</div>
+        <ul class="pkg-includes">
+          <li>Full deluxe garland with draping</li>
+          <li>Two pillars + custom mirror decals</li>
+          <li>LED sign & premium styling</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-room">
+      <div class="pkg-card">
+        <div class="pkg-icon">🌸</div>
+        <div class="pkg-name">Simple & Sweet</div>
+        <div class="pkg-price">Starting at $150</div>
+        <ul class="pkg-includes">
+          <li>Balloon banner & number balloons</li>
+          <li>40 floor + 30 ceiling balloons</li>
+          <li>Scattered rose petals</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-icon">🕯️</div>
+        <div class="pkg-name">Modern Romance</div>
+        <div class="pkg-price">Starting at $300</div>
+        <ul class="pkg-includes">
+          <li>Balloon banner & number balloons</li>
+          <li>30 ceiling balloons</li>
+          <li>Tea lights & rose petals</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card featured">
+        <div class="pkg-featured-badge">Most Popular</div>
+        <div class="pkg-icon">💫</div>
+        <div class="pkg-name">Social Lux</div>
+        <div class="pkg-price">Starting at $450</div>
+        <ul class="pkg-includes">
+          <li>Full room balloon styling</li>
+          <li>Rose petal walkway & bed décor</li>
+          <li>Custom floral arrangement</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-icon">🍓</div>
+        <div class="pkg-name">Dream Display</div>
+        <div class="pkg-price">Starting at $550</div>
+        <ul class="pkg-includes">
+          <li>Balloon banner & custom florals</li>
+          <li>Rose petal walkway</li>
+          <li>Tea lights & chocolate strawberries</li>
+        </ul>
+        <a href="#contact" class="pkg-cta">Request Quote →</a>
+      </div>
+    </div>
+    <p class="pkg-note reveal">All packages include delivery, setup & breakdown. Custom quotes available for large or corporate events. <a href="#contact" style="color:var(--taupe);">Contact us</a> for a personalized estimate.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Our Work</span>
+      <h2 class="section-title">Gallery</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item">
+        <img src="assets/gallery1.png" alt="Balloon garland with pillar display" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">✦</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/gallery2.png" alt="Balloon garland with reflective backdrop" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">✦</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/gallery3.png" alt="Room decor balloon installation" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">✦</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/gallery4.png" alt="Luxury showcase balloon styling" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">✦</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/photobooth.png" alt="Photobooth rental with guests" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-overlay-icon">✦</span></div>
+      </div>
+    </div>
+    <div class="gallery-cta-wrap reveal">
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" class="btn-outline" style="color:var(--cream); border-color:rgba(250,247,244,0.25);">Follow us on Instagram for more ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <img src="assets/wedding1.png" alt="Social Sisters Collective team" class="about-img" />
+        <div class="about-accent"></div>
+      </div>
+      <div class="about-text reveal">
+        <span class="section-eyebrow">Our Story</span>
+        <h2>Created by women,<br>for every celebration.</h2>
+        <p>Founded by a team of creative women who believe in the power of beautiful, inclusive design, Social Sisters Collective brings a fresh perspective to party styling across Oregon.</p>
+        <p>We specialize in neutral palettes that celebrate every skin tone and create safe, welcoming spaces for all celebrations — from intimate baby showers to large-scale brand activations.</p>
+        <div class="about-values">
+          <div class="about-value">
+            <div class="about-value-icon">🌿</div>
+            <div class="about-value-text">
+              <h4>Eco-Conscious</h4>
+              <p>We use biodegradable latex balloons and offer recycling programs at every event.</p>
             </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">🤝</div>
+            <div class="about-value-text">
+              <h4>Safety First</h4>
+              <p>Every installation is carefully planned with venue-approved methods.</p>
+            </div>
+          </div>
+          <div class="about-value">
+            <div class="about-value-icon">🎨</div>
+            <div class="about-value-text">
+              <h4>Inclusive by Design</h4>
+              <p>Our signature nude aesthetic is designed to complement and celebrate every guest.</p>
+            </div>
+          </div>
         </div>
-    </header>
+        <a href="#contact" class="btn-primary">Start Your Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-image">
-            <img src="assets/hero1.png" alt="Elegant party decoration with nude balloons and modern styling" class="hero-img">
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="reveal">
+        <span class="section-eyebrow">Questions</span>
+        <h2 class="section-title">Frequently Asked</h2>
+        <p class="section-sub">Can't find your answer here? Reach out at <a href="/cdn-cgi/l/email-protection#d6a5b9b5bfb7baa5bfa5a2b3a4a5b5b9babab3b5a2bfa0b396b9a3a2bab9b9bdf8b5b9bb" style="color:var(--taupe);"><span class="__cf_email__" data-cfemail="e79488848e868b948e949382959484888b8b8284938e9182a78892938b88888cc984888a">[email&#160;protected]</span></a></p>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q">
+            What's your typical lead time for bookings?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We recommend booking at least 2–3 weeks in advance for most events. For larger installations or brand activations, we suggest 4–6 weeks to ensure availability and proper planning. Weekend dates fill quickly — book early!</div></div>
         </div>
-        <div class="hero-content">
-            <div class="container">
-                <h1 class="hero-title">Modern minimalist party decoration and balloon styling.</h1>
-                <p class="hero-subtitle">From intimate showers to brand activations, we design photo-ready setups for your party.</p>
-                <div class="hero-buttons">
-                    <a href="#packages" class="btn btn-primary">View Packages</a>
-                    <a href="#contact" class="btn btn-secondary">Get a Quote</a>
-                </div>
-            </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Do you offer delivery and installation?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Yes! We provide full-service delivery, installation, and breakdown for all our packages. Our team handles everything from setup to cleanup, so you can focus entirely on enjoying your event.</div></div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="assets/wedding1.jpg" alt="Balloon design and styling">
-                    </div>
-                    <h3>Balloon Design</h3>
-                    <p>Custom balloon arrangements that transform any space into an Instagram-worthy backdrop.</p>
-                    <ul>
-                        <li>Organic balloon garlands</li>
-                        <li>Custom color palettes</li>
-                        <li>Installation & cleanup</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="assets/wedding1.png" alt="Backdrops and props for events">
-                    </div>
-                    <h3>Backdrops & Props</h3>
-                    <p>Stunning photo backdrops and curated props that elevate your event's visual appeal.</p>
-                    <ul>
-                        <li>Custom backdrop design</li>
-                        <li>Prop styling & placement</li>
-                        <li>Lighting coordination</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="assets/roomdecor.png" alt="Room Decor">
-                    </div>
-                    <h3>Room Decor</h3>
-                    <p>Decorate your room with balloons and other party essentials.</p>
-                    <ul>
-                        <li>Complete setup</li>
-                        <li>Premium ballons & props</li>
-                        <li>Personalized design</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="assets/photobooth.png" alt="Photobooth rental with guests taking pictures">
-                    </div>
-                    <h3>Photobooth Rental</h3>
-                    <p>Interactive photobooths with instant sharing to keep guests engaged and memories captured.</p>
-                    <ul>
-                        <li>iPad booths + glam filters</li>
-                        <li>Custom overlays & branded templates</li>
-                        <li>Backdrop, props, delivery & setup</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="assets/drape2.png" alt="Drape decoration">
-                    </div>
-                    <h3>Drape Decorations</h3>
-                    <p>Transform any venue with drape decorations that add a touch of elegance to your event.</p>
-                    <ul>
-                        <li>Custom drape color</li>
-                        <li>Drape desing & placement</li>
-                        <li>Safe, venue-approved installs</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Are your balloons eco-friendly?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We use high-quality latex balloons that are biodegradable and sourced from responsible suppliers. We also offer balloon recycling programs and always clean up thoroughly after every event.</div></div>
         </div>
-    </section>
-
-    <!-- Packages Section -->
-    <section id="packages" class="packages">
-        <div class="container">
-            <h2 class="section-title">Packages & Starting Prices</h2>
-            <p class="packages-intro">Choose the balloon styling or room décor offering that best fits your celebration. Every package includes delivery, setup, and breakdown with our signature Social Sisters touch.</p>
-
-            <div class="packages-category">
-                <h3 class="packages-subtitle">Event Installation Packages</h3>
-                <div class="packages-grid">
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/basic-decor.jpg" alt="Basic decor balloon backdrop">
-                        </div>
-                        <h4>#1 Basic Decor</h4>
-                        <div class="package-price">$275+</div>
-                        <ul class="package-list">
-                            <li>Half garland (up to 3 colors)</li>
-                            <li>One styling pillar</li>
-                            <li>LED sign rental</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/standard-event.jpg" alt="Standard event garland display">
-                        </div>
-                        <h4>#2 Standard Event</h4>
-                        <div class="package-price">$550–$650+</div>
-                        <ul class="package-list">
-                            <li>Full garland (2 arches)</li>
-                            <li>Mirror styling with decals</li>
-                            <li>LED sign rental</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/premium-celebration.jpg" alt="Premium celebration balloon install">
-                        </div>
-                        <h4>#3 Premium Celebration</h4>
-                        <div class="package-price">$850–$1,000+</div>
-                        <ul class="package-list">
-                            <li>Full garland (up to 3 colors)</li>
-                            <li>Two pillars with premium draping</li>
-                            <li>Mirror styling & LED sign</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/luxury-showcase.jpg" alt="Luxury showcase balloon installation">
-                        </div>
-                        <h4>#4 Luxury Showcase</h4>
-                        <div class="package-price">$1,200+</div>
-                        <ul class="package-list">
-                            <li>Full deluxe garland with draping</li>
-                            <li>Two pillars + custom mirror decals</li>
-                            <li>LED sign & premium styling</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="packages-category">
-                <h3 class="packages-subtitle">Room Decor Packages</h3>
-                <div class="packages-grid">
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/simple-sweet.jpg" alt="Simple and sweet room decor package">
-                        </div>
-                        <h4>Simple &amp; Sweet</h4>
-                        <div class="package-price">$150+</div>
-                        <ul class="package-list">
-                            <li>Balloon banner & number balloons</li>
-                            <li>40 floor + 30 ceiling balloons</li>
-                            <li>Scattered rose petals</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/modern-romance.jpg" alt="Modern romance room decor package">
-                        </div>
-                        <h4>Modern Romance</h4>
-                        <div class="package-price">$300+</div>
-                        <ul class="package-list">
-                            <li>Balloon banner & number balloons</li>
-                            <li>30 ceiling balloons</li>
-                            <li>Tea lights (bed only) & rose petals</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/social-lux.jpg" alt="Social lux room decor package">
-                        </div>
-                        <h4>Social Lux</h4>
-                        <div class="package-price">$450+</div>
-                        <ul class="package-list">
-                            <li>Full room balloon styling</li>
-                            <li>Rose petal walkway & bed décor</li>
-                            <li>Custom floral arrangement</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                    <div class="package-card">
-                        <div class="package-image">
-                            <img src="assets/packages/dream-display.jpg" alt="Dream display room decor package">
-                        </div>
-                        <h4>Dream Display</h4>
-                        <div class="package-price">$550+</div>
-                        <ul class="package-list">
-                            <li>Balloon banner & optional numbers</li>
-                            <li>Custom floral + rose petal walkway</li>
-                            <li>Tea lights, chocolate strawberries & more</li>
-                        </ul>
-                        <a href="#contact" class="btn btn-outline">Request Quote</a>
-                    </div>
-                </div>
-            </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            Can you match specific color schemes?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Absolutely! We specialize in custom color matching and can work with your brand colors, wedding palette, or any specific aesthetic you have in mind. Just share your vision during consultation.</div></div>
         </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2 class="section-title">Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="assets/gallery1.png" alt="Balloon garland with pillar display" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery2.png" alt="Balloon garland with reflective backdrop" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery3.png" alt="Room decor balloon installation" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="assets/gallery4.png" alt="Luxury showcase balloon styling" class="gallery-img">
-                </div>
-            </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            What areas do you serve?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We are based in Portland, Oregon and serve the greater Portland metro area including Beaverton, Hillsboro, Salem, and surrounding communities. Travel fees may apply for events outside a 30-mile radius.</div></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">About Us</h2>
-                <p>Founded by a team of creative women who believe in the power of beautiful, inclusive design, Social Sisters Collective brings a fresh perspective to party styling across Oregon. We specialize in neutral palettes that celebrate every skin tone and create safe, welcoming spaces for all celebrations.</p>
-                <p>Our commitment to safety-first installations means every setup is carefully planned and executed. From intimate baby showers to large brand activations, we approach each project with the same attention to detail and passion for creating memorable moments.</p>
-                <a href="#contact" class="btn btn-primary">Start Your Quote</a>
-            </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            What is your payment and cancellation policy?
+            <span class="faq-arrow">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">We require a 50% deposit to reserve your date, with the remaining balance due 7 days before your event. Cancellations made 14+ days in advance receive a full deposit refund. Contact us for details on rescheduling.</div></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="faq-list">
-                <details class="faq-item">
-                    <summary>What's your typical lead time for bookings?</summary>
-                    <p>We recommend booking at least 2-3 weeks in advance for most events. For larger installations or brand activations, we suggest 4-6 weeks to ensure availability and proper planning.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Do you offer delivery and installation services?</summary>
-                    <p>Yes! We provide full-service delivery, installation, and breakdown for all our packages. Our team handles everything from setup to cleanup, so you can focus on enjoying your event.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Are your balloons eco-friendly?</summary>
-                    <p>We use high-quality latex balloons that are biodegradable and sourced from responsible suppliers. We also offer balloon recycling programs and always clean up thoroughly after events.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Can you match specific color schemes?</summary>
-                    <p>Absolutely! We specialize in custom color matching and can work with your brand colors, wedding palette, or any specific aesthetic you have in mind. Just let us know your vision during consultation.</p>
-                </details>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <span class="section-eyebrow">Get in Touch</span>
+        <h2>Ready to create something beautiful?</h2>
+        <p>Fill out the form and we'll get back to you within 24 hours with a custom quote and availability check.</p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">✉</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Email</span>
+              <a href="/cdn-cgi/l/email-protection#43302c202a222f302a3037263130202c2f2f2620372a3526032c36372f2c2c286d202c2e"><span class="__cf_email__" data-cfemail="b1c2ded2d8d0ddc2d8c2c5d4c3c2d2deddddd4d2c5d8c7d4f1dec4c5dddededa9fd2dedc">[email&#160;protected]</span></a>
             </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Location</span>
+              Portland, Oregon
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">🗺</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Service Area</span>
+              Throughout Oregon
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📅</div>
+            <div class="contact-detail-text">
+              <span class="contact-detail-label">Book Ahead</span>
+              2–3 weeks minimum recommended
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Get Your Quote</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Ready to create something beautiful?</h3>
-                    <p>Tell us about your vision and we'll bring it to life with our signature nude aesthetic and attention to detail.</p>
-                    <div class="contact-details">
-                        <p><strong>Email:</strong> socialsisterscollective@outlook.com</p>
-                        <p><strong>Location:</strong> Portland, Oregon</p>
-                        <p><strong>Service Area:</strong> Throughout Oregon</p>
-                    </div>
-                </div>
-                <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
-                    <input type="text" name="_honey" style="display:none">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="event-date">Event Date</label>
-                        <input type="date" id="event-date" name="event-date">
-                    </div>
-                    <div class="form-group">
-                        <label for="location">City/Venue</label>
-                        <input type="text" id="location" name="location">
-                    </div>
-                    <div class="form-group">
-                        <label for="budget">Budget</label>
-                        <select id="budget" name="budget">
-                            <option value="">Select budget range</option>
-                            <option value="under-500">Under $500</option>
-                            <option value="500-1000">$500 - $1,000</option>
-                            <option value="1000-2000">$1,000 - $2,000</option>
-                            <option value="2000-plus">$2,000+</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="services">Services Needed</label>
-                        <textarea id="services" name="services" rows="3" placeholder="Tell us about your event and what services you're interested in..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Any additional details about your vision..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-            </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" placeholder="you@email.com" required />
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <h3>Social Sisters Collective</h3>
-                    <p>Creating beautiful, inclusive party experiences across Oregon with our signature nude aesthetic and attention to detail.</p>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p>socialsisterscollective@outlook.com</p>
-                    <p>Portland, Oregon</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <a href="#services">Services</a>
-                    <a href="#packages">Packages</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#about">About</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="current-year"></span> Social Sisters Collective. All rights reserved.</p>
-            </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(503) 000-0000" />
+          </div>
+          <div class="form-group">
+            <label for="date">Event Date</label>
+            <input type="date" id="date" />
+          </div>
         </div>
-    </footer>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="venue">City / Venue</label>
+            <input type="text" id="venue" placeholder="Portland, OR" />
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget Range</label>
+            <select id="budget">
+              <option value="" disabled selected>Select range</option>
+              <option value="under500">Under $500</option>
+              <option value="500-1000">$500 – $1,000</option>
+              <option value="1000-2000">$1,000 – $2,000</option>
+              <option value="2000+">$2,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Services Needed</label>
+          <div class="form-services">
+            <label class="service-check"><input type="checkbox" value="balloon" /> Balloon Design</label>
+            <label class="service-check"><input type="checkbox" value="backdrop" /> Backdrops & Props</label>
+            <label class="service-check"><input type="checkbox" value="room" /> Room Décor</label>
+            <label class="service-check"><input type="checkbox" value="photobooth" /> Photobooth Rental</label>
+            <label class="service-check"><input type="checkbox" value="drape" /> Drape Decorations</label>
+            <label class="service-check"><input type="checkbox" value="full" /> Full Styling</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Tell Us About Your Vision</label>
+          <textarea id="message" placeholder="Describe your event, theme, color palette, or any special requests..."></textarea>
+        </div>
+        <button class="form-submit" id="formSubmit" type="button">Send My Quote Request</button>
+        <div class="form-status" id="formStatus"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="assets/app.js"></script>
-</body>
-</html>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="nav-logo">Social Sisters <span>Collective</span></a>
+        <p>Creating beautiful, inclusive party experiences across Oregon with our signature nude aesthetic and unwavering attention to detail.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">IG</a>
+          <a href="https://www.facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">FB</a>
+          <a href="https://www.tiktok.com" target="_blank" rel="noopener" class="social-icon" aria-label="TikTok">TK</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Balloon Design</a></li>
+          <li><a href="#services">Backdrops & Props</a></li>
+          <li><a href="#services">Room Décor</a></li>
+          <li><a href="#services">Photobooth Rental</a></li>
+          <li><a href="#services">Drape Decorations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#73001c101a121f001a0007160100101c1f1f1610071a0516331c06071f1c1c185d101c1e">Email Us</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="#contact">Book an Event</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2024 Social Sisters Collective. All rights reserved. Portland, Oregon.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // NAV SCROLL
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+  });
+
+  // HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
+
+  // TABS
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // FAQ ACCORDION
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // REVEAL ON SCROLL
+  const reveals = document.querySelectorAll('.reveal');
+  reveals.forEach(el => el.classList.add('animate-ready'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), 80 * i);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FORM SUBMIT (client-side with mailto fallback)
+  document.getElementById('formSubmit').addEventListener('click', function() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const date = document.getElementById('date').value;
+    const venue = document.getElementById('venue').value.trim();
+    const budget = document.getElementById('budget').value;
+    const message = document.getElementById('message').value.trim();
+    const services = [...document.querySelectorAll('.form-services input:checked')].map(c => c.value).join(', ');
+    const status = document.getElementById('formStatus');
+
+    if (!name || !email) {
+      status.style.color = '#e8a0a0';
+      status.textContent = 'Please fill in your name and email.';
+      return;
+    }
+
+    const subject = encodeURIComponent('Quote Request - Social Sisters Collective');
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date
