@@ -1539,7 +1539,7 @@
       <div class="reveal">
         <span class="section-eyebrow">Questions</span>
         <h2 class="section-title">Frequently Asked</h2>
-        <p class="section-sub">Can't find your answer here? Reach out at <a href="mailto:socialsisterscollective@outlook.com" style="color:var(--taupe);">socialsisterscollective@outlook.com</a></p>
+        <p class="section-sub">Can't find your answer here? Reach out at <a href="/cdn-cgi/l/email-protection#3a495559535b564953494e5f4849595556565f594e534c5f7a554f4e5655555114595557" style="color:var(--taupe);"><span class="__cf_email__" data-cfemail="275448444e464b544e545342555444484b4b4244534e5142674852534b48484c0944484a">[email&#160;protected]</span></a></p>
       </div>
       <div class="faq-list reveal">
         <div class="faq-item">
@@ -1723,7 +1723,7 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="mailto:socialsisterscollective@outlook.com">Email Us</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#ef9c808c868e839c869c9b8a9d9c8c8083838a8c9b86998aaf809a9b83808084c18c8082">Email Us</a></li>
           <li><a href="#contact">Get a Quote</a></li>
           <li><a href="#contact">Book an Event</a></li>
         </ul>
@@ -1738,7 +1738,7 @@
 <!-- BACK TO TOP -->
 <a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // NAV SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1804,17 +1804,19 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 
-  // FORM SUBMIT — builds mailto with all fields
-  document.getElementById('formSubmit').addEventListener('click', function() {
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const phone   = document.getElementById('phone').value.trim();
-    const date    = document.getElementById('date').value;
-    const venue   = document.getElementById('venue').value.trim();
-    const budget  = document.getElementById('budget').value;
-    const message = document.getElementById('message').value.trim();
+
+  // FORM SUBMIT — Formspree
+  document.getElementById('formSubmit').addEventListener('click', async function() {
+    const name     = document.getElementById('name').value.trim();
+    const email    = document.getElementById('email').value.trim();
+    const phone    = document.getElementById('phone').value.trim();
+    const date     = document.getElementById('date').value;
+    const venue    = document.getElementById('venue').value.trim();
+    const budget   = document.getElementById('budget').value;
+    const message  = document.getElementById('message').value.trim();
     const services = [...document.querySelectorAll('.form-services input:checked')].map(c => c.value).join(', ');
-    const status  = document.getElementById('formStatus');
+    const status   = document.getElementById('formStatus');
+    const btn      = this;
 
     if (!name || !email) {
       status.style.color = '#e8a0a0';
@@ -1829,24 +1831,52 @@
       '2000+': '$2,000+'
     };
 
-    const subject = encodeURIComponent('Quote Request - Social Sisters Collective');
-    const body = encodeURIComponent(
-      'Name: ' + name +
-      '\nEmail: ' + email +
-      '\nPhone: ' + (phone || 'Not provided') +
-      '\nEvent Date: ' + (date || 'Not provided') +
-      '\nCity / Venue: ' + (venue || 'Not provided') +
-      '\nBudget: ' + (budgetLabels[budget] || 'Not selected') +
-      '\nServices: ' + (services || 'Not specified') +
-      '\n\nMessage:\n' + (message || 'No message provided')
-    );
 
-    window.location.href = 'mailto:socialsisterscollective@outlook.com?subject=' + subject + '&body=' + body;
 
-    status.style.color = 'var(--gold-light)';
-    status.textContent = 'Opening your email client... we\'ll get back to you within 24 hours! 🌸';
-    this.disabled = true;
-    setTimeout(() => { this.disabled = false; status.textContent = ''; }, 6000);
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    status.textContent = '';
+
+    try {
+      const payload = new URLSearchParams();
+      payload.append('name',     name);
+      payload.append('email',    email);
+      payload.append('phone',    phone    || 'Not provided');
+      payload.append('date',     date     || 'Not provided');
+      payload.append('venue',    venue    || 'Not provided');
+      payload.append('budget',   budgetLabels[budget] || 'Not selected');
+      payload.append('services', services || 'Not specified');
+      payload.append('message',  message  || 'No message provided');
+
+      const res = await fetch('https://formspree.io/f/xlgwqgyw', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: payload.toString()
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        document.querySelector('.contact-form').innerHTML =
+          '<div style="text-align:center; padding: 3rem 1rem;">' +
+          '<div style="font-size:2.5rem; margin-bottom:1rem;">🌸</div>' +
+          '<h3 style="font-family:var(--serif); font-size:1.8rem; font-weight:300; color:var(--cream); margin-bottom:0.75rem;">Thank you, ' + name + '!</h3>' +
+          '<p style="color:rgba(250,247,244,0.7); font-size:0.95rem; line-height:1.7; max-width:360px; margin:0 auto;">' +
+          "Your quote request has been received. We'll be in touch within 24 hours to bring your vision to life.</p></div>";
+      } else {
+        const errMsg = (data.errors && data.errors.map(function(e){ return e.message; }).join(', ')) || ('Status ' + res.status);
+        throw new Error(errMsg);
+      }
+    } catch (err) {
+      console.error('Formspree error:', err);
+      status.style.color = '#e8a0a0';
+      status.textContent = 'Something went wrong. Please email us directly at socialsisterscollective@outlook.com';
+      btn.disabled = false;
+      btn.textContent = 'Send My Quote Request';
+    }
   });
 </script>
 </body>
