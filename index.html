@@ -1539,7 +1539,7 @@
       <div class="reveal">
         <span class="section-eyebrow">Questions</span>
         <h2 class="section-title">Frequently Asked</h2>
-        <p class="section-sub">Can't find your answer here? Reach out at <a href="/cdn-cgi/l/email-protection#d6a5b9b5bfb7baa5bfa5a2b3a4a5b5b9babab3b5a2bfa0b396b9a3a2bab9b9bdf8b5b9bb" style="color:var(--taupe);"><span class="__cf_email__" data-cfemail="e79488848e868b948e949382959484888b8b8284938e9182a78892938b88888cc984888a">[email&#160;protected]</span></a></p>
+        <p class="section-sub">Can't find your answer here? Reach out at <a href="mailto:socialsisterscollective@outlook.com" style="color:var(--taupe);">socialsisterscollective@outlook.com</a></p>
       </div>
       <div class="faq-list reveal">
         <div class="faq-item">
@@ -1723,14 +1723,14 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="/cdn-cgi/l/email-protection#73001c101a121f001a0007160100101c1f1f1610071a0516331c06071f1c1c185d101c1e">Email Us</a></li>
+          <li><a href="mailto:socialsisterscollective@outlook.com">Email Us</a></li>
           <li><a href="#contact">Get a Quote</a></li>
           <li><a href="#contact">Book an Event</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2024 Social Sisters Collective. All rights reserved. Portland, Oregon.</p>
+      <p class="footer-copy">© 2025 Social Sisters Collective. All rights reserved. Portland, Oregon.</p>
     </div>
   </div>
 </footer>
@@ -1738,7 +1738,7 @@
 <!-- BACK TO TOP -->
 <a href="#home" class="back-top" id="backTop" aria-label="Back to top">↑</a>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   // NAV SCROLL
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -1754,13 +1754,30 @@
   mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
   document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-  // TABS
+  // TABS — preserve active tab when returning from #contact
+  let activeTab = 'event';
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
+      activeTab = btn.dataset.tab;
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      document.getElementById('tab-' + activeTab).classList.add('active');
+    });
+  });
+
+  // pkg-cta "Request Quote" links — pass selected package to form message
+  document.querySelectorAll('.pkg-cta').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const card = this.closest('.pkg-card');
+      const pkgName = card.querySelector('.pkg-name') ? card.querySelector('.pkg-name').textContent : '';
+      const pkgPrice = card.querySelector('.pkg-price') ? card.querySelector('.pkg-price').textContent : '';
+      const msgField = document.getElementById('message');
+      if (msgField && pkgName) {
+        msgField.value = 'I am interested in the ' + pkgName + ' package (' + pkgPrice + ').';
+      }
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     });
   });
 
@@ -1787,17 +1804,17 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 
-  // FORM SUBMIT (client-side with mailto fallback)
+  // FORM SUBMIT — builds mailto with all fields
   document.getElementById('formSubmit').addEventListener('click', function() {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const date = document.getElementById('date').value;
-    const venue = document.getElementById('venue').value.trim();
-    const budget = document.getElementById('budget').value;
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const phone   = document.getElementById('phone').value.trim();
+    const date    = document.getElementById('date').value;
+    const venue   = document.getElementById('venue').value.trim();
+    const budget  = document.getElementById('budget').value;
     const message = document.getElementById('message').value.trim();
     const services = [...document.querySelectorAll('.form-services input:checked')].map(c => c.value).join(', ');
-    const status = document.getElementById('formStatus');
+    const status  = document.getElementById('formStatus');
 
     if (!name || !email) {
       status.style.color = '#e8a0a0';
@@ -1805,6 +1822,32 @@
       return;
     }
 
+    const budgetLabels = {
+      'under500': 'Under $500',
+      '500-1000': '$500 – $1,000',
+      '1000-2000': '$1,000 – $2,000',
+      '2000+': '$2,000+'
+    };
+
     const subject = encodeURIComponent('Quote Request - Social Sisters Collective');
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nEvent Date
+      'Name: ' + name +
+      '\nEmail: ' + email +
+      '\nPhone: ' + (phone || 'Not provided') +
+      '\nEvent Date: ' + (date || 'Not provided') +
+      '\nCity / Venue: ' + (venue || 'Not provided') +
+      '\nBudget: ' + (budgetLabels[budget] || 'Not selected') +
+      '\nServices: ' + (services || 'Not specified') +
+      '\n\nMessage:\n' + (message || 'No message provided')
+    );
+
+    window.location.href = 'mailto:socialsisterscollective@outlook.com?subject=' + subject + '&body=' + body;
+
+    status.style.color = 'var(--gold-light)';
+    status.textContent = 'Opening your email client... we\'ll get back to you within 24 hours! 🌸';
+    this.disabled = true;
+    setTimeout(() => { this.disabled = false; status.textContent = ''; }, 6000);
+  });
+</script>
+</body>
+</html>
