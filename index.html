@@ -253,6 +253,9 @@
       object-fit: cover;
       display: block;
     }
+    video.hero-img {
+      object-position: center;
+    }
     .hero-img-overlay {
       position: absolute;
       inset: 0;
@@ -1213,8 +1216,10 @@
     </div>
   </div>
   <div class="hero-right">
-    <img src="assets/socialsisters-vid-1.mov
-" alt="Elegant party decoration with nude balloons" class="hero-img" />
+    <video class="hero-img" autoplay muted loop playsinline>
+      <source src="assets/socialsisters-vid-1.mov" type="video/mp4" />
+      <source src="assets/socialsisters-vid-1.mov" type="video/quicktime" />
+    </video>
     <div class="hero-img-overlay"></div>
     <div class="hero-float-tag">
       <p>"Every detail, beautifully placed."</p>
