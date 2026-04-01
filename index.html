@@ -161,18 +161,43 @@
     /* ── HERO ── */
     #home {
       min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       position: relative;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-video-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero-video-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(250,247,244,0.92) 0%,
+        rgba(250,247,244,0.75) 40%,
+        rgba(250,247,244,0.15) 70%,
+        rgba(250,247,244,0) 100%
+      );
     }
     .hero-left {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 8rem 4rem 4rem 6rem;
-      position: relative;
-      z-index: 2;
+      padding: 10rem 4rem 6rem 6rem;
+      max-width: 680px;
     }
     .hero-eyebrow {
       font-size: 0.72rem;
@@ -243,38 +268,8 @@
       color: var(--text-light);
       margin-top: 0.2rem;
     }
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    video.hero-img {
-      object-position: center;
-    }
-    .hero-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, var(--cream) 0%, transparent 20%);
-    }
     .hero-float-tag {
-      position: absolute;
-      bottom: 3rem;
-      left: -1rem;
-      background: var(--cream);
-      padding: 1rem 1.5rem;
-      box-shadow: 0 8px 40px rgba(92,61,46,0.12);
-      border-radius: 2px;
-    }
-    .hero-float-tag p {
-      font-family: var(--serif);
-      font-size: 0.9rem;
-      font-style: italic;
-      color: var(--taupe);
+      display: none;
     }
 
     /* ── MARQUEE ── */
@@ -1022,24 +1017,19 @@
       .hamburger { display: flex; }
 
       /* Hero */
-      #home {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
-        min-height: auto;
+      #home { min-height: 100svh; }
+      .hero-video-bg::after {
+        background: linear-gradient(
+          to bottom,
+          rgba(250,247,244,0.88) 0%,
+          rgba(250,247,244,0.70) 50%,
+          rgba(250,247,244,0.55) 100%
+        );
       }
       .hero-left {
-        padding: 6rem 1.25rem 2.5rem;
-        order: 2;
+        padding: 7rem 1.25rem 3rem;
+        max-width: 100%;
       }
-      .hero-right {
-        order: 1;
-        height: 65vw;
-        min-height: 240px;
-      }
-      .hero-img-overlay {
-        background: linear-gradient(to bottom, transparent 50%, var(--cream) 100%);
-      }
-      .hero-float-tag { display: none; }
       .hero-h1 { font-size: clamp(2.2rem, 8vw, 3rem); }
       .hero-sub { max-width: 100%; font-size: 0.9rem; }
       .hero-actions { flex-direction: column; }
@@ -1140,7 +1130,6 @@
       .gallery-item:not(:first-child) { aspect-ratio: 4/3; }
 
       /* Hero */
-      .hero-right { height: 75vw; }
       .hero-badges { justify-content: space-between; }
 
       /* Form */
@@ -1190,6 +1179,12 @@
 
 <!-- HERO -->
 <section id="home">
+  <div class="hero-video-bg">
+    <video autoplay muted loop playsinline>
+      <source src="assets/socialsisters-vid-1.mov" type="video/mp4" />
+      <source src="assets/socialsisters-vid-1.mov" type="video/quicktime" />
+    </video>
+  </div>
   <div class="hero-left">
     <p class="hero-eyebrow">Portland, Oregon · Est. 2024</p>
     <h1 class="hero-h1">
@@ -1213,16 +1208,6 @@
         <div class="badge-num">Oregon</div>
         <div class="badge-label">Wide Service</div>
       </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <video class="hero-img" autoplay muted loop playsinline>
-      <source src="assets/socialsisters-vid-1.mov" type="video/mp4" />
-      <source src="assets/socialsisters-vid-1.mov" type="video/quicktime" />
-    </video>
-    <div class="hero-img-overlay"></div>
-    <div class="hero-float-tag">
-      <p>"Every detail, beautifully placed."</p>
     </div>
   </div>
 </section>
