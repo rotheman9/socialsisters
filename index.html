@@ -239,14 +239,15 @@
       font-size: 0.78rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border: 1px solid var(--blush);
-      color: var(--text);
+      background: var(--taupe);
+      border: 1px solid var(--taupe);
+      color: var(--cream);
       padding: 0.85rem 2rem;
       border-radius: 2px;
       text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .btn-outline:hover { border-color: var(--taupe); color: var(--deep); }
+    .btn-outline:hover { background: var(--rose); border-color: var(--rose); }
     .hero-badges {
       display: flex;
       gap: 2rem;
@@ -1174,7 +1175,7 @@
   <a href="#gallery" class="mobile-link">Gallery</a>
   <a href="#about" class="mobile-link">About</a>
   <a href="#faq" class="mobile-link">FAQ</a>
-  <a href="#contact" class="mobile-link">Get a Quote</a>
+  <a href="#contact" class="mobile-link">Contact Us</a>
 </div>
 
 <!-- HERO -->
@@ -1193,7 +1194,7 @@
     <p class="hero-sub">From intimate showers to brand activations, we design photo-ready setups tailored to your vision — inclusive, elegant, unforgettable.</p>
     <div class="hero-actions">
       <a href="#packages" class="btn-primary">View Packages</a>
-      <a href="#contact" class="btn-outline">Get a Quote</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
     </div>
     <div class="hero-badges">
       <div class="badge">
@@ -1245,7 +1246,7 @@
     </div>
     <div class="services-grid reveal">
       <div class="service-card">
-        <div class="service-icon">🎈</div>
+        
         <h3>Balloon Design</h3>
         <p>Custom balloon arrangements that transform any space into an Instagram-worthy backdrop.</p>
         <ul class="service-list">
@@ -1255,7 +1256,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <div class="service-icon">📸</div>
+        
         <h3>Backdrops & Props</h3>
         <p>Stunning photo backdrops and curated props that elevate your event's visual appeal.</p>
         <ul class="service-list">
@@ -1265,7 +1266,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <div class="service-icon">🛏</div>
+        
         <h3>Room Décor</h3>
         <p>Romantic room decorations featuring floor and ceiling balloons, petals, and premium accents.</p>
         <ul class="service-list">
@@ -1275,7 +1276,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <div class="service-icon">🪩</div>
+        
         <h3>Digital Photobooth</h3>
         <p>Interactive digital photobooths with glam filters and instant sharing — available in 3, 4, or 5 hour packages.</p>
         <ul class="service-list">
@@ -1285,7 +1286,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <div class="service-icon">✨</div>
+        
         <h3>Drape Decorations</h3>
         <p>Transform any venue with flowing drape decorations that add a touch of understated elegance.</p>
         <ul class="service-list">
@@ -1295,7 +1296,7 @@
         </ul>
       </div>
       <div class="service-card">
-        <div class="service-icon">🌸</div>
+        
         <h3>Full Event Styling</h3>
         <p>Let us take the reins on the entire visual experience — from concept to complete installation.</p>
         <ul class="service-list">
@@ -1355,7 +1356,7 @@
     </div>
     <div class="tab-panel active" id="tab-event">
       <div class="pkg-card">
-        <div class="pkg-icon">🎈</div>
+        
         <div class="pkg-name">#1 Basic Decor</div>
         <div class="pkg-price">Starting at $275</div>
         <ul class="pkg-includes">
@@ -1363,10 +1364,9 @@
           <li>One styling pillar</li>
           <li>LED sign rental</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card">
-        <div class="pkg-icon">🌟</div>
+        
         <div class="pkg-name">#2 Standard Event</div>
         <div class="pkg-price">$550 – $650+</div>
         <ul class="pkg-includes">
@@ -1374,11 +1374,10 @@
           <li>Mirror styling with decals</li>
           <li>LED sign rental</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card featured">
         <div class="pkg-featured-badge">Most Popular</div>
-        <div class="pkg-icon">✨</div>
+        
         <div class="pkg-name">#3 Premium Celebration</div>
         <div class="pkg-price">$850 – $1,000+</div>
         <ul class="pkg-includes">
@@ -1386,10 +1385,9 @@
           <li>Two pillars with premium draping</li>
           <li>Mirror styling & LED sign</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card">
-        <div class="pkg-icon">👑</div>
+        
         <div class="pkg-name">#4 Luxury Showcase</div>
         <div class="pkg-price">Starting at $1,200</div>
         <ul class="pkg-includes">
@@ -1397,12 +1395,11 @@
           <li>Two pillars + custom mirror decals</li>
           <li>LED sign & premium styling</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
     </div>
     <div class="tab-panel" id="tab-room">
       <div class="pkg-card">
-        <div class="pkg-icon">🌸</div>
+        
         <div class="pkg-name">The Signature</div>
         <div class="pkg-price">$200</div>
         <ul class="pkg-includes">
@@ -1410,11 +1407,10 @@
           <li>40 floor + 30 ceiling balloons</li>
           <li>Scattered rose petals</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card featured">
         <div class="pkg-featured-badge">Most Popular</div>
-        <div class="pkg-icon">💫</div>
+        
         <div class="pkg-name">The Collective</div>
         <div class="pkg-price">$450</div>
         <ul class="pkg-includes">
@@ -1422,10 +1418,9 @@
           <li>Rose petal walkway & bed décor</li>
           <li>Custom floral arrangement</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card">
-        <div class="pkg-icon">👑</div>
+        
         <div class="pkg-name">The Iconic</div>
         <div class="pkg-price">$650</div>
         <ul class="pkg-includes">
@@ -1433,12 +1428,11 @@
           <li>Rose petal walkway & florals</li>
           <li>Tea lights & luxury accents</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
     </div>
     <div class="tab-panel" id="tab-photobooth">
       <div class="pkg-card">
-        <div class="pkg-icon">📸</div>
+        
         <div class="pkg-name">Petite Social</div>
         <div class="pkg-price">$300 <span style="font-size:0.75rem; color:var(--text-light); font-weight:400;">/ 3+ hrs</span></div>
         <ul class="pkg-includes">
@@ -1446,11 +1440,10 @@
           <li>Digital photobooth experience</li>
           <li>Instant sharing & prints</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card featured">
         <div class="pkg-featured-badge">Most Popular</div>
-        <div class="pkg-icon">🪩</div>
+        
         <div class="pkg-name">Premier Social</div>
         <div class="pkg-price">$450 <span style="font-size:0.75rem; color:var(--text-light); font-weight:400;">/ 4 hrs</span></div>
         <ul class="pkg-includes">
@@ -1458,10 +1451,9 @@
           <li>Digital photobooth experience</li>
           <li>Instant sharing & prints</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card">
-        <div class="pkg-icon">✨</div>
+        
         <div class="pkg-name">Elite Collective</div>
         <div class="pkg-price">$575 <span style="font-size:0.75rem; color:var(--text-light); font-weight:400;">/ 5 hrs</span></div>
         <ul class="pkg-includes">
@@ -1469,10 +1461,9 @@
           <li>Digital photobooth experience</li>
           <li>Instant sharing & prints</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
       <div class="pkg-card">
-        <div class="pkg-icon">🎁</div>
+        
         <div class="pkg-name">Add-Ons</div>
         <div class="pkg-price">From $25</div>
         <ul class="pkg-includes">
@@ -1480,7 +1471,6 @@
           <li>Prop upgrade — $25</li>
           <li>Custom backdrop available</li>
         </ul>
-        <a href="#contact" class="pkg-cta">Request Quote →</a>
       </div>
     </div>
     <p class="pkg-note reveal">All packages include delivery, setup & breakdown. Custom quotes available for large or corporate events. <a href="#contact" style="color:var(--taupe);">Contact us</a> for a personalized estimate.</p>
@@ -1558,7 +1548,7 @@
             </div>
           </div>
         </div>
-        <a href="#contact" class="btn-primary">Start Your Quote</a>
+        <a href="#contact" class="btn-primary">Contact Us</a>
       </div>
     </div>
   </div>
@@ -1756,7 +1746,7 @@
         <h5>Contact</h5>
         <ul>
           <li><a href="/cdn-cgi/l/email-protection#ef9c808c868e839c869c9b8a9d9c8c8083838a8c9b86998aaf809a9b83808084c18c8082">Email Us</a></li>
-          <li><a href="#contact">Get a Quote</a></li>
+          <li><a href="#contact">Contact Us</a></li>
           <li><a href="#contact">Book an Event</a></li>
         </ul>
       </div>
@@ -1798,20 +1788,6 @@
     });
   });
 
-  // pkg-cta "Request Quote" links — pass selected package to form message
-  document.querySelectorAll('.pkg-cta').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const card = this.closest('.pkg-card');
-      const pkgName = card.querySelector('.pkg-name') ? card.querySelector('.pkg-name').textContent : '';
-      const pkgPrice = card.querySelector('.pkg-price') ? card.querySelector('.pkg-price').textContent : '';
-      const msgField = document.getElementById('message');
-      if (msgField && pkgName) {
-        msgField.value = 'I am interested in the ' + pkgName + ' package (' + pkgPrice + ').';
-      }
-      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    });
-  });
 
   // FAQ ACCORDION
   document.querySelectorAll('.faq-q').forEach(btn => {
